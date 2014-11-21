@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+
+    <LinearLayout
+        android:background="#000000"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:textColor="#75ad3e"
+            android:textSize="32dp"
+
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:autoText="false"/>
+
+
+        <TextView
+            android:textColor="#ffffff"
+            android:textSize="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title2"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+     <TextView
+
+        android:textSize="20dp"
+        android:textColor="#75ad3e"
+        android:id="@+id/textViewConrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:text="Local " />
+     <TextView
+         android:textColor="#ffffff"
+         android:textSize="20dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="backup"
+         />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin_button"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+    <Button
+        style="@style/button"
+        android:layout_weight="1"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/local"
+        android:id="@+id/button_contacts" />
+
+
+
+    </LinearLayout>
+    <TextView
+        android:scrollbars="vertical"
+
+        android:id="@+id/textViewXml"
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <Button
+        style="@style/button"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:enabled="false"
+        ></Button>
+
+        <Button
+            android:id="@+id/listFileButton"
+            android:text="@string/list"
+            style="@style/button"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
