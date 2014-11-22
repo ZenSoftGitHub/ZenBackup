@@ -186,7 +186,7 @@ public class MainActivity extends FragmentActivity{
         fragments.add(Fragment.instantiate(this,ControlScreen.class.getName()));
 
 
-        
+
         // Create  the adapter in charge of fragment list
          this.mPagerAdapter = new MyPagerAdapter(super.getSupportFragmentManager(), fragments);
 
