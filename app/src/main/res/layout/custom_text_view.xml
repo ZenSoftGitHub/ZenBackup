@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/custom_list_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#75ad3e"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/custom_list_tv"
         android:background="#000000"
-        android:textAppearance="?android:attr/textAppearanceListItem"
-
-        />
+        android:textColor="#75ad3e"
+        android:layout_width="150dp"
+        android:layout_height="fill_parent" />
+    <Button
+        style="@style/button"
+        android:text="@string/delete"
+        android:id="@+id/custom_list_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/custom_list_edit"
+        style="@style/button"
+        android:text="@string/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

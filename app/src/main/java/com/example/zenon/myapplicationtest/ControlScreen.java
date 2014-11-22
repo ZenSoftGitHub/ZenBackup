@@ -49,9 +49,9 @@ public class ControlScreen extends Fragment {
         //tv= (TextView)inflatedView.findViewById(R.id.textViewXml);
         //tv.setMovementMethod(new ScrollingMovementMethod());
         listViewBackup =(ListView) inflatedView.findViewById(R.id.list_backup);
-
+        listBackup();
         // Get the contacts save button
-        contactsButton = (Button) inflatedView.findViewById(R.id.button_contacts);
+        /*contactsButton = (Button) inflatedView.findViewById(R.id.button_contacts);
         contactsButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 try {
@@ -72,7 +72,7 @@ public class ControlScreen extends Fragment {
             public void onClick(View v) {
                 listBackup();
             }
-        });
+        });*/
 
         return inflatedView;
     }
@@ -161,8 +161,8 @@ public class ControlScreen extends Fragment {
             files=files+file[i].getName()+"\n";
             fileName.add(file[i].getName());
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_view,fileName);
-
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
+        BackupArrayAdapter adapter = new BackupArrayAdapter(getActivity(),R.id.custom_list_tv,fileName);
         listViewBackup.setAdapter(adapter);
 
         //tv.setText(files);

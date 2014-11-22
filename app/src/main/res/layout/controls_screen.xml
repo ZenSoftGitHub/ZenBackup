@@ -67,7 +67,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
@@ -82,7 +82,7 @@
 
 
 
-    </LinearLayout>
+    </LinearLayout>-->
     <!--<TextView
         android:scrollbars="vertical"
 
@@ -103,7 +103,8 @@
         <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    <Button
+
+     <!--<Button
         style="@style/button"
         android:layout_width="0dip"
         android:layout_weight="1"
@@ -118,7 +119,8 @@
             style="@style/button"
             android:layout_weight="1"
             android:layout_width="0dip"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
+
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>

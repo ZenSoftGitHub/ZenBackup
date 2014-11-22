@@ -14,5 +14,6 @@
     <string name="delete">Delete backup</string>
     <string name="local">Save To</string>
     <string name="status_disconnected">Disconnected</string>
+    <string name="edit">Edit</string>
 
 </resources>
