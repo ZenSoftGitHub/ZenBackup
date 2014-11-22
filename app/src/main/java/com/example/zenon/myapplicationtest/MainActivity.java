@@ -112,10 +112,8 @@ public class MainActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_my_activity_test);
           setContentView(R.layout.activity_view_pager);
 
-        // Création de la liste de Fragments que fera défiler le PagerAdapter
         final List fragments = new Vector();
 
 
@@ -144,8 +142,6 @@ public class MainActivity extends FragmentActivity{
                         toast.show();
 
 
-                        //Toast.makeText(getApplicationContext(),"GPDS says"+((String)inputMessage.obj),Toast.LENGTH_LONG).show();
-                        //pager.setCurrentItem(1);
                         ((ConnectionScreen)fragments.get(0)).getSendButton().setEnabled(true);
                         ((ConnectionScreen)fragments.get(0)).getConnectBtn().setEnabled(false);
                         ((ConnectionScreen)fragments.get(0)).getStatusTv().setText("Connected");
@@ -185,20 +181,16 @@ public class MainActivity extends FragmentActivity{
 
 
 
-        // Ajout des Fragments dans la liste
 
         fragments.add(((ConnectionScreen)(Fragment.instantiate(this,ConnectionScreen.class.getName()))));
         fragments.add(Fragment.instantiate(this,ControlScreen.class.getName()));
 
 
-        //((ConnectionScreen) (fragments.get(0))).addPageListener(pageListener);
-
-        // Création de l'adapter qui s'occupera de l'affichage de la liste de
-        // Fragments
-        this.mPagerAdapter = new MyPagerAdapter(super.getSupportFragmentManager(), fragments);
+        
+        // Create  the adapter in charge of fragment list
+         this.mPagerAdapter = new MyPagerAdapter(super.getSupportFragmentManager(), fragments);
 
         pager = (CustomViewPager) super.findViewById(R.id.viewpager);
-        // Affectation de l'adapter au ViewPager
         pager.setAdapter(this.mPagerAdapter);
 
 
