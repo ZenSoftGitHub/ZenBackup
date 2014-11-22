@@ -65,7 +65,7 @@ public class ControlScreen extends Fragment {
                 listBackup();
             }
         });
- 
+
         return inflatedView;
     }
 
