@@ -65,12 +65,7 @@ public class ControlScreen extends Fragment {
                 listBackup();
             }
         });
-     /*   sendButton = (Button) inflatedView.findViewById(R.id.send_button);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                sendContacts();
-            }
-        });*/
+ 
         return inflatedView;
     }
 

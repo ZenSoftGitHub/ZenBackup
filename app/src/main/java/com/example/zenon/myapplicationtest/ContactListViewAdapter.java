@@ -51,7 +51,7 @@ public class ContactListViewAdapter extends BaseAdapter implements ListAdapter {
         if(current!=null) {
             number.setText(current.getDataEntry());
             type.setText(activity.getString(current.getTypeResource()));
-        } else   number.setText("La Ruse pour le test");
+        } else   number.setText("No entry found!");
         return listEntry;
     }
 }
