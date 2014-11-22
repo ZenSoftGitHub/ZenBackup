@@ -74,8 +74,6 @@ public class MainActivity extends FragmentActivity{
     private final ContactsSpinnerAdapter adapter = new ContactsSpinnerAdapter(spinnerContent,this);
     private ListView contactListView;
 
-    private final int port=9876;
-    private final String addrServ= "192.168.54.11";
     private EditText textAddress = null;
     private EditText textPort =null;
     private Button connectBtn = null;
