@@ -14,14 +14,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Document;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -36,12 +40,16 @@ public class ControlScreen extends Fragment {
     private XmlSaver saver;
     private TextView tv;
     private String filename;
+    private ListView listViewBackup;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflatedView= inflater.inflate(R.layout.controls_screen,container,false);
-        tv= (TextView)inflatedView.findViewById(R.id.textViewXml);
-        tv.setMovementMethod(new ScrollingMovementMethod());
+        //tv= (TextView)inflatedView.findViewById(R.id.textViewXml);
+        //tv.setMovementMethod(new ScrollingMovementMethod());
+        listViewBackup =(ListView) inflatedView.findViewById(R.id.list_backup);
+
         // Get the contacts save button
         contactsButton = (Button) inflatedView.findViewById(R.id.button_contacts);
         contactsButton.setOnClickListener(new View.OnClickListener(){
@@ -145,15 +153,20 @@ public class ControlScreen extends Fragment {
         String files="";
         File f = new File(path);
         File file[] = f.listFiles();
+        ArrayList<String> fileName = fileName = new ArrayList<String>();
 
         Log.d("Files", "Size: "+ file.length);
         for (int i=0; i < file.length; i++)
         {
             Log.d("Files", "FileName:" + file[i].getName());
             files=files+file[i].getName()+"\n";
+            fileName.add(file[i].getName());
         }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,fileName);
 
-        tv.setText(files);
+        listViewBackup.setAdapter(adapter);
+
+        //tv.setText(files);
     }
 
 
