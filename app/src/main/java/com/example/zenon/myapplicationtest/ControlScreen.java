@@ -114,7 +114,6 @@ public class ControlScreen extends Fragment {
         saver = new XmlSaver(getActivity());
         saver.saveContacts();
         Log.d("XmlFIle ",saver.getXmlContacts());
-        tv.setText(saver.getXmlContacts());
 
         writeToFile(saver.getDocXml());
 
@@ -162,7 +161,7 @@ public class ControlScreen extends Fragment {
             files=files+file[i].getName()+"\n";
             fileName.add(file[i].getName());
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,fileName);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_view,fileName);
 
         listViewBackup.setAdapter(adapter);
 

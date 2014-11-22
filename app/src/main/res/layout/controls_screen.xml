@@ -92,12 +92,15 @@
         android:layout_height="150dp" />-->
 
     <ListView
+        android:id="@+id/list_backup"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-           
+
     </ListView>
-    <LinearLayout
+
+        <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
     <Button

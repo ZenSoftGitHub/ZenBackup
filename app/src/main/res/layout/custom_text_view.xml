@@ -8,7 +8,9 @@
         android:id="@+id/custom_list_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:background="#75ad3e"
+        android:textColor="#75ad3e"
+        android:background="#000000"
+        android:textAppearance="?android:attr/textAppearanceListItem"
+
         />
 </LinearLayout>
