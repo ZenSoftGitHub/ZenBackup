@@ -83,14 +83,20 @@
 
 
     </LinearLayout>
-    <TextView
+    <!--<TextView
         android:scrollbars="vertical"
 
         android:id="@+id/textViewXml"
         android:background="#ffffff"
         android:layout_width="fill_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp" />-->
 
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+           
+    </ListView>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
