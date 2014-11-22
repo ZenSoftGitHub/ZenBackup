@@ -57,18 +57,14 @@ public class ConnectionScreen extends Fragment {
     private BufferedReader input= null;
 
     private MovePageListener pageListener;
-    private ConnectionListener listenerSockRes;
+
     private Handler handlerMessage;
 
     private TcpConnection tcpConnection;
     private TcpTask taskConnection;
     @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      //  super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_my_activity_test);
-       // getActivity().setContentView(R.layout.activity_view_pager);
 
-        listenerSockRes=((MainActivity)getActivity()).getConnectionListener();
         pageListener = ((MainActivity)getActivity()).getMovePageListener();
         handlerMessage = ((MainActivity)getActivity()).getHandlerMessage();
 

@@ -95,26 +95,6 @@ public class MainActivity extends FragmentActivity{
     private TcpConnection tcpConnection;
 
 
-    private ConnectionListener listenSockRes= new ConnectionListener(){
-        @Override
-        public void OnConnectionCompleted(String res) {
-            Log.d("Debug listener", "String retour =" + res);
-            Toast.makeText(getApplicationContext(), "GPDS says:" + res, Toast.LENGTH_LONG).show();
-            // Need to go the screen Actions.
-            MovePageEvent event = new MovePageEvent(this,1);
-            if(pageListener!=null){
-                pageListener.onMovePage(event);
-            }
-
-
-
-        }
-    };
-
-
-
-
-
 
     private MovePageListener pageListener = new MovePageListener() {
         @Override
@@ -227,9 +207,7 @@ public class MainActivity extends FragmentActivity{
     }
 
 
-    public ConnectionListener getConnectionListener(){
-        return listenSockRes;
-    }
+
 
     public MovePageListener getMovePageListener(){
         return pageListener;
