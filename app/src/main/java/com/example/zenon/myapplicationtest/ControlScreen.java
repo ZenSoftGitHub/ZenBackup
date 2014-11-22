@@ -134,7 +134,7 @@ public class ControlScreen extends Fragment {
         Log.d("ControlScreen","sendContacts function\n");
         tcp = ((MainActivity)getActivity()).getTcpConnection();
         if(tcp!=null){
-            Log.d("ControlScreen","Sending XmlSave to PDBS\n");
+            Log.d("ControlScreen","Sending XmlSave to Server\n");
             tcp.sendData(saver.getXmlContacts());
         }
         else{
