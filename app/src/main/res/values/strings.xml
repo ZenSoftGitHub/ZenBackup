@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Application test</string>
+    <string name="app_name">ZenBakcup</string>
     <string name="hello_world">Zen</string>
     <string name="title2">Backup</string>
     <string name="action_settings">Settings</string>
