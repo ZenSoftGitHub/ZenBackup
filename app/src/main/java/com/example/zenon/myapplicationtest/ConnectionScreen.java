@@ -80,7 +80,7 @@ public class ConnectionScreen extends Fragment {
 
         connectBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                // Toast.makeText(getApplicationContext(),"Try to connect",Toast.LENGTH_SHORT).show();
+
                 if((textAddress.getText().length()!=0 )&& (textPort.getText().length()!=0)) {
                     addrServ=textAddress.getText().toString();
                     port=Integer.parseInt(textPort.getText().toString());
@@ -89,7 +89,7 @@ public class ConnectionScreen extends Fragment {
                     connect(v);
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(),"Don't be such an idiot and enter" +
-                            " true values to connect GNU Perl Droid service!",Toast.LENGTH_LONG).show();
+                            " a valid Ip address and a port to connect the Backup Droid service!",Toast.LENGTH_LONG).show();
                 }
             }
 
