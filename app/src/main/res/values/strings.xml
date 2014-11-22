@@ -13,5 +13,6 @@
     <string name="list">List backups</string>
     <string name="delete">Delete backup</string>
     <string name="local">Save To</string>
+    <string name="status_disconnected">Disconnected</string>
 
 </resources>
