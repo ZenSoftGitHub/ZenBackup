@@ -44,7 +44,7 @@ public class ConnectionScreen extends Fragment {
     private final List<SpinnerEntry> spinnerContent = new LinkedList<SpinnerEntry>();
     private Spinner spinner;
     private final ContactsSpinnerAdapter adapter = new ContactsSpinnerAdapter(spinnerContent,getActivity());
-    private ListView contactListView;
+    
 
     private int port;
     private String addrServ;
