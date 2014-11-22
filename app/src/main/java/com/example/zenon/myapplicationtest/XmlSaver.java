@@ -105,10 +105,6 @@ public class XmlSaver {
 
         t.transform(source,new StreamResult(out));
 
-       // Log.d("DEBUG","FICHIER XML:\n"+ out.toString()+"\n Fin XML");
-       // StreamResult fileWriter = new StreamResult(new File("/storage/sdcard0/contacts.xml"));
-        //t.transform(source,fileWriter);
-
         xmlContacts = out.toString();
     }
 
