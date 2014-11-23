@@ -37,8 +37,8 @@ public class BackupArrayAdapter extends ArrayAdapter<String>{
         convertView = inflator.inflate(R.layout.custom_text_view, null);
 
         holder.backupName =(TextView) convertView.findViewById(R.id.custom_list_tv);
-        holder.deleteButton = (Button) convertView.findViewById(R.id.custom_list_delete);
-        holder.editButton = (Button) convertView.findViewById(R.id.custom_list_edit);
+        //holder.deleteButton = (Button) convertView.findViewById(R.id.custom_list_delete);
+        //holder.editButton = (Button) convertView.findViewById(R.id.custom_list_edit);
 
         holder.backupName.setText((String)rowData.get(position));
         return convertView;

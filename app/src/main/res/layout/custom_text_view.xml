@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        style="@style/clickable_tv"
+        android:clickable="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/custom_list_tv"
-        android:background="#000000"
-        android:textColor="#75ad3e"
-        android:gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="fill_parent" />
-    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"/>
+       <!-- android:background="#75ad3e"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:textColor="#ffffff"
+        android:gravity="center_vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />-->
+
+ <!--   <Button
         style="@style/button"
         android:text="@string/delete"
         android:id="@+id/custom_list_delete"
@@ -25,4 +31,5 @@
         android:text="@string/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+        -->
 </LinearLayout>

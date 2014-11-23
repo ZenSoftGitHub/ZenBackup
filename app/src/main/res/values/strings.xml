@@ -4,7 +4,7 @@
     <string name="app_name">ZenBakcup</string>
     <string name="hello_world">Zen</string>
     <string name="title2">Backup</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_local_save">Create local backup</string>
     <string name="addrserver">Address Server</string>
     <string name="portserver">Port Server</string>
     <string name="connect">Connect</string>

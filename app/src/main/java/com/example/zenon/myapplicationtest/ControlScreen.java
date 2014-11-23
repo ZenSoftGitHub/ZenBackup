@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -158,11 +159,13 @@ public class ControlScreen extends Fragment {
         for (int i=0; i < file.length; i++)
         {
             Log.d("Files", "FileName:" + file[i].getName());
-            files=files+file[i].getName()+"\n";
-            fileName.add(file[i].getName());
+            Date lastMod = new Date(file[i].lastModified());
+
+            //files=files+file[i].getName()+" last modified:"+ lastMod+"\n";
+            fileName.add(file[i].getName()+": "+lastMod);
         }
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
-        BackupArrayAdapter adapter = new BackupArrayAdapter(getActivity(),R.id.custom_list_tv,fileName);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
+        //BackupArrayAdapter adapter = new BackupArrayAdapter(getActivity(),R.id.custom_list_tv,fileName);
         listViewBackup.setAdapter(adapter);
 
         //tv.setText(files);
