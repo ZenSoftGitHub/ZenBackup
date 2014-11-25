@@ -65,29 +65,7 @@ public class ControlScreen extends Fragment {
             }
         });
         listBackup();
-        // Get the contacts save button
-        /*contactsButton = (Button) inflatedView.findViewById(R.id.button_contacts);
-        contactsButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                try {
-                    askForFileName();
-                    //saveContacts();
 
-                    //sendContacts();
-                }catch(Exception io){
-                    Log.e("ControlsScreen","An error occurred during saving\n ");
-                }
-            }
-        });
-
-
-        listFileButton=(Button)inflatedView.findViewById(R.id.listFileButton);
-        listFileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listBackup();
-            }
-        });*/
 
         return inflatedView;
     }
