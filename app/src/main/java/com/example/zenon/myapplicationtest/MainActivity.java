@@ -2,7 +2,9 @@ package com.example.zenon.myapplicationtest;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
@@ -92,7 +94,7 @@ public class MainActivity extends FragmentActivity{
 
     private Handler mHandler ;
     private TcpConnection tcpConnection;
-
+    private List fragments;
 
 
     private MovePageListener pageListener = new MovePageListener() {
@@ -115,7 +117,7 @@ public class MainActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_view_pager);
 
-        final List fragments = new Vector();
+        fragments = new Vector();
 
 
         mHandler = new Handler() {
@@ -197,11 +199,59 @@ public class MainActivity extends FragmentActivity{
 
     }
 
-
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.my_activity_test,menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.local_backup:
+                Log.d("MainActivity", "Create Local backup action");
+                askForFileName();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    public void askForFileName(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Enter a name for the  backup");
+        alert.setMessage("File Name:");
+
+// Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton){
+                String filename = input.getText().toString();
+                try{
+                    ((ControlScreen)fragments.get(1)).saveContacts(filename);
+                    ((ControlScreen)fragments.get(1)).listBackup();
+                    // Do something with value!
+                }catch (Exception e){
+                    Log.e("AskForFileName","Exception="+e.getMessage());
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }});
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+        alert.show();
     }
 
     public MovePageListener getMovePageListener(){

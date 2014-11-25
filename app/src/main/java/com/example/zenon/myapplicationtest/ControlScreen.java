@@ -14,11 +14,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 
@@ -40,7 +42,7 @@ public class ControlScreen extends Fragment {
     private TcpConnection tcp;
     private XmlSaver saver;
     private TextView tv;
-    private String filename;
+    //private String filename;
     private ListView listViewBackup;
 
     @Override
@@ -50,6 +52,18 @@ public class ControlScreen extends Fragment {
         //tv= (TextView)inflatedView.findViewById(R.id.textViewXml);
         //tv.setMovementMethod(new ScrollingMovementMethod());
         listViewBackup =(ListView) inflatedView.findViewById(R.id.list_backup);
+        listViewBackup.setClickable(true);
+
+        listViewBackup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = (String)parent.getItemAtPosition(position);
+                Toast.makeText(getActivity().getApplicationContext(),"Deleting " + s,Toast.LENGTH_LONG).show();
+                String[] splited= s.split(":");
+                delete_backup(splited[0]);
+                listBackup();
+            }
+        });
         listBackup();
         // Get the contacts save button
         /*contactsButton = (Button) inflatedView.findViewById(R.id.button_contacts);
@@ -78,35 +92,9 @@ public class ControlScreen extends Fragment {
         return inflatedView;
     }
 
-    public void askForFileName(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
-        alert.setTitle("Enter a name for the  backup");
-        alert.setMessage("File Name:");
 
-// Set an EditText view to get user input
-        final EditText input = new EditText(getActivity());
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton){
-                filename = input.getText().toString();
-                try{
-                    saveContacts();
-                // Do something with value!
-            }catch (Exception e){Log.e("AskForFileName","Exception="+e.getMessage());}
-        }});
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-            }
-        });
-
-        alert.show();
-    }
-
-    public void saveContacts() throws Exception{
+    public void saveContacts(String filename) throws Exception{
 
 
 
@@ -116,12 +104,12 @@ public class ControlScreen extends Fragment {
         saver.saveContacts();
         Log.d("XmlFIle ",saver.getXmlContacts());
 
-        writeToFile(saver.getDocXml());
+        writeToFile(saver.getDocXml(),filename);
 
 
     }
 
-    public void writeToFile(Document xml){
+    public void writeToFile(Document xml,String filename){
        try {
            DOMSource source = new DOMSource(xml);
            TransformerFactory tf = TransformerFactory.newInstance();
@@ -164,11 +152,36 @@ public class ControlScreen extends Fragment {
             //files=files+file[i].getName()+" last modified:"+ lastMod+"\n";
             fileName.add(file[i].getName()+": "+lastMod);
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(),R.layout.custom_text_view,R.id.custom_list_tv,fileName);
         //BackupArrayAdapter adapter = new BackupArrayAdapter(getActivity(),R.id.custom_list_tv,fileName);
         listViewBackup.setAdapter(adapter);
 
+
         //tv.setText(files);
+    }
+
+    public void delete_backup(String name){
+        String path = Environment.getExternalStorageDirectory().toString()+"/zenbackup/";
+        File dir = new File(path);
+        File files[] = dir.listFiles();
+        boolean find=false;
+        int i=0;
+        File temp=null;
+        while(!find && i<files.length){
+            temp = files[i];
+            find=name.contentEquals(temp.getName());
+
+            i++;
+        }
+        if(find) {
+            try {
+
+                temp.delete();
+            } catch (Exception e) {
+                Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 

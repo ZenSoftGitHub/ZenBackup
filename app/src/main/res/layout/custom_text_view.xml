@@ -5,12 +5,15 @@
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/clickable_tv"
-        android:clickable="true"
+
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/custom_list_tv"
         android:layout_width="fill_parent"
         android:layout_height="50dp"/>
+    <!--android:textColor="#ffffff"
+android:background="#75ad3e"-->
+
+
        <!-- android:background="#75ad3e"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:textColor="#ffffff"

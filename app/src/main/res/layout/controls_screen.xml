@@ -92,6 +92,7 @@
         android:layout_height="150dp" />-->
 
     <ListView
+        style="@style/custom_list"
         android:id="@+id/list_backup"
 
         android:layout_width="fill_parent"
