@@ -31,12 +31,19 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.provider.ContactsContract;
 import android.widget.Toast;
 
 
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,6 +55,7 @@ import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.Socket;
+import java.net.URI;
 import java.sql.Connection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -91,10 +99,13 @@ public class MainActivity extends FragmentActivity{
     public static final int TCP_CONNECTION=3;
     public static final int MESSAGE_SOCKET_CLOSE=4;
     public static final int MESSAGE_CANT_CONNECT=5;
+    public static final int MESSAGE_FORMAT_NUMBER=6;
+    public static final int MESSAGE_EXCEPTION=7;
 
     private Handler mHandler ;
     private TcpConnection tcpConnection;
     private List fragments;
+    protected ProgressBar mProgressBar=null;
 
 
     private MovePageListener pageListener = new MovePageListener() {
@@ -145,10 +156,10 @@ public class MainActivity extends FragmentActivity{
                         toast.show();
 
 
-                        ((ConnectionScreen)fragments.get(0)).getSendButton().setEnabled(true);
-                        ((ConnectionScreen)fragments.get(0)).getConnectBtn().setEnabled(false);
-                        ((ConnectionScreen)fragments.get(0)).getStatusTv().setText("Connected");
-                        ((ConnectionScreen)fragments.get(0)).getStatusTv().setTextColor(Color.GREEN);
+                        //((ConnectionScreen)fragments.get(0)).getSendButton().setEnabled(true);
+                        //((ConnectionScreen)fragments.get(0)).getConnectBtn().setEnabled(false);
+                       // ((ConnectionScreen)fragments.get(0)).getStatusTv().setText("Connected");
+                        //((ConnectionScreen)fragments.get(0)).getStatusTv().setTextColor(Color.GREEN);
 
                         break;
 
@@ -164,18 +175,20 @@ public class MainActivity extends FragmentActivity{
                         break;
 
                     case MESSAGE_CANT_CONNECT:
-                        LayoutInflater inf = getLayoutInflater();
-                        View lay = inf.inflate(R.layout.custom_toast,
-                                (ViewGroup) findViewById(R.id.custom_toast));
+                        Toast t_cant_connect = setToast(inputMessage);
+                        t_cant_connect.show();
+                        break;
 
-                        // Create Custom Toast
-                        Toast t = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
-                        TextView t_tv = (TextView)lay.findViewById(R.id.toast_tv);
-                        t_tv.setText(((String)inputMessage.obj));
-                        // toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                        //toast.setDuration(Toast.LENGTH_LONG);
-                        t.setView(lay);
-                        t.show();
+                    case MESSAGE_EXCEPTION:
+                        Toast t_exception = setToast(inputMessage);
+                        t_exception.show();
+                        break;
+
+                    case MESSAGE_FORMAT_NUMBER:
+                        Toast t_numberFormatException = setToast(inputMessage);
+                        t_numberFormatException.show();
+                        break;
+
 
                 }
             }
@@ -196,6 +209,23 @@ public class MainActivity extends FragmentActivity{
         pager = (CustomViewPager) super.findViewById(R.id.viewpager);
         pager.setAdapter(this.mPagerAdapter);
 
+
+
+
+    }
+
+
+    private Toast setToast(Message inputMessage){
+        LayoutInflater inf = getLayoutInflater();
+        View lay = inf.inflate(R.layout.custom_toast,
+                (ViewGroup) findViewById(R.id.custom_toast));
+
+        // Create Custom Toast
+        Toast t = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
+        TextView t_tv = (TextView)lay.findViewById(R.id.toast_tv);
+        t_tv.setText(((String)inputMessage.obj));
+        t.setView(lay);
+        return t;
 
     }
 
@@ -266,4 +296,12 @@ public class MainActivity extends FragmentActivity{
         return tcpConnection;
     }
 
+
+
+
+
+
 }
+
+
+

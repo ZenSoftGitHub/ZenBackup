@@ -176,7 +176,7 @@ public class XmlSaver {
      *
      ****************************************************/
     public String getXmlContacts(){
-        return "<begOfFile>\n"+xmlContacts+"<endOfFile>";
+        return xmlContacts;
     }
     public Document getDocXml(){return docXml;}
 }

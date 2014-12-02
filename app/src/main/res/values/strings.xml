@@ -9,7 +9,7 @@
     <string name="portserver">Port Server</string>
     <string name="connect">Connect</string>
     <string name="send">Send</string>
-    <string name="status">Status</string>
+    <string name="status">No pending task</string>
     <string name="list">List backups</string>
     <string name="delete">Delete backup</string>
     <string name="local">Save To</string>
